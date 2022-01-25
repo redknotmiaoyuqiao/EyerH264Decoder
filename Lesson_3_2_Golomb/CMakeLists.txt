@@ -1,7 +1,7 @@
 include_directories (../)
 
 add_executable(
-        Lesson_2_3_ReadAnnexB
+        Lesson_3_2_Golomb
         AnnexBReader.hpp
         AnnexBReader.cpp
         Main.cpp
