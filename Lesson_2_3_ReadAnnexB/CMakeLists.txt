@@ -2,8 +2,13 @@ include_directories (../)
 
 add_executable(
         Lesson_2_3_ReadAnnexB
+
+        Nalu.hpp
+        Nalu.cpp
+
         AnnexBReader.hpp
         AnnexBReader.cpp
+
         Main.cpp
 )
 

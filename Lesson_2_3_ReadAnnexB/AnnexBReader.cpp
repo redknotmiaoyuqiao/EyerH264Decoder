@@ -35,7 +35,7 @@ int AnnexBReader::Close()
 }
 
 // 用来读取一个 Nalu 文件
-int AnnexBReader::ReadNalu(uint8_t * data, int * dataLen, int * startcodeLen)
+int AnnexBReader::ReadNalu(Nalu & nalu)
 {
     while(1){
         if(bufferLen <= 0){
@@ -54,7 +54,7 @@ int AnnexBReader::ReadNalu(uint8_t * data, int * dataLen, int * startcodeLen)
             break;
         }
 
-        *startcodeLen = startCodeLen;
+        nalu.startCodeLen = startCodeLen;
 
         // Find End Code
         int endPos = -1;
@@ -68,7 +68,7 @@ int AnnexBReader::ReadNalu(uint8_t * data, int * dataLen, int * startcodeLen)
         }
 
         if(endPos > 0){
-            memcpy(data, buffer, endPos);
+            nalu.SetBuf(buffer, endPos);
             uint8_t * _buffer = (uint8_t*)malloc(bufferLen - endPos);
 
             memcpy(_buffer, buffer + endPos, bufferLen - endPos);
@@ -85,7 +85,7 @@ int AnnexBReader::ReadNalu(uint8_t * data, int * dataLen, int * startcodeLen)
         else{
             if(isEnd == true){
                 // 到达文件末尾，取所有 buffer 出来
-                memcpy(data, buffer, bufferLen);
+                nalu.SetBuf(buffer, bufferLen);
                 if(buffer != nullptr){
                     free(buffer);
                     buffer = nullptr;
