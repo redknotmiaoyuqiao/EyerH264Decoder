@@ -28,9 +28,11 @@ int main(int argc, char const *argv[])
         if(ret){
             break;
         }
-        printf("=====================\n");
-        printf("Buffer Len: %d\n", rbsp.len);
-        printf("%d %d %d %d %d\n", rbsp.buf[0], rbsp.buf[1], rbsp.buf[2], rbsp.buf[3], rbsp.buf[4]);
+        if(ebsp.len != rbsp.len) {
+            printf("=====================\n");
+            printf("EBSP Len: %d\n", ebsp.len);
+            printf("RBSP Len: %d\n", rbsp.len);
+        }
     }
 
     reader.Close();
