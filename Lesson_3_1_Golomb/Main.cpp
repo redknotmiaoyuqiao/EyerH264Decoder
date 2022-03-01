@@ -28,6 +28,11 @@ int main(int argc, char const *argv[])
         if(ret){
             break;
         }
+        if(ebsp.len != rbsp.len) {
+            printf("=====================\n");
+            printf("EBSP Len: %d\n", ebsp.len);
+            printf("RBSP Len: %d\n", rbsp.len);
+        }
     }
 
     reader.Close();
