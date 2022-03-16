@@ -1,7 +1,7 @@
 include_directories (../)
 
 add_executable(
-        Lesson_3_3_BitStream
+        Lesson_3_5_SPS_PPS
 
         RBSP.hpp
         RBSP.cpp
@@ -18,6 +18,12 @@ add_executable(
         BitStream.hpp
         BitStream.cpp
 
+        NaluSPS.hpp
+        NaluSPS.cpp
+
+        NaluPPS.hpp
+        NaluPPS.cpp
+
         Main.cpp
 )
 
@@ -28,7 +34,7 @@ file(COPY
         )
 
 INSTALL(
-        TARGETS Lesson_3_3_BitStream
+        TARGETS Lesson_3_5_SPS_PPS
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

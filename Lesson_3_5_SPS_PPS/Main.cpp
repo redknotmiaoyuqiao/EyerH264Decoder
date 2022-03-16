@@ -1,4 +1,6 @@
 #include "AnnexBReader.hpp"
+#include "NaluSPS.hpp"
+#include "NaluPPS.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -17,28 +19,19 @@ int main(int argc, char const *argv[])
             break;
         }
 
-        EBSP ebsp;
-        ret = nalu.GetEBSP(ebsp);
-        if(ret){
-            break;
+        nalu.ParseRBSP();
+        nalu.ParseHeader();
+
+        printf("Nalu Type: %d\n", nalu.GetNaluType());
+
+        if(nalu.GetNaluType() == 7){
+            NaluSPS sps = nalu;
+            sps.Parse();
         }
-
-        RBSP rbsp;
-        ret = ebsp.GetRBSP(rbsp);
-        if(ret){
-            break;
+        if(nalu.GetNaluType() == 8){
+            NaluPPS pps = nalu;
+            pps.Parse();
         }
-
-        uint8_t naluHead = rbsp.buf[0];
-
-        int forbidden_bit   = (naluHead >> 7) & 1;
-        int nal_ref_idc     = (naluHead >> 5) & 3;
-        int nal_unit_type   = (naluHead >> 0) & 0x1f;
-
-        printf("=================================\n");
-        printf("forbidden_bit: %d\n", forbidden_bit);
-        printf("nal_ref_idc: %d\n", nal_ref_idc);
-        printf("nal_unit_type: %d\n", nal_unit_type);
     }
 
     reader.Close();

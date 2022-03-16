@@ -6,7 +6,10 @@
 class RBSP {
 public:
     RBSP();
+    RBSP(const RBSP & rbsp);
     ~RBSP();
+
+    RBSP & operator = (const RBSP & rbsp);
 
 public:
     uint8_t * buf = nullptr;

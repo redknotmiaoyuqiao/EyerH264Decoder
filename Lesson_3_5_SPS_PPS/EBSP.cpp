@@ -9,12 +9,30 @@ EBSP::EBSP()
 
 }
 
+EBSP::EBSP(const EBSP & ebsp)
+{
+    *this = ebsp;
+}
+
 EBSP::~EBSP()
 {
     if(buf != nullptr){
         free(buf);
         buf = nullptr;
     }
+}
+
+EBSP & EBSP::operator = (const EBSP & ebsp)
+{
+    if(buf != nullptr){
+        free(buf);
+        buf = nullptr;
+    }
+    len = ebsp.len;
+    buf = (uint8_t *)malloc(len);
+    memcpy(buf, ebsp.buf, len);
+
+    return *this;
 }
 
 int EBSP::GetRBSP(RBSP & rbsp)

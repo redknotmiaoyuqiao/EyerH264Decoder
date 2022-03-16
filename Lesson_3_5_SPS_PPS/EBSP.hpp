@@ -8,7 +8,10 @@
 class EBSP {
 public:
     EBSP();
+    EBSP(const EBSP & ebsp);
     ~EBSP();
+
+    EBSP & operator = (const EBSP & ebsp);
 
     int GetRBSP(RBSP & rbsp);
 
