@@ -1,31 +1,25 @@
-include_directories (../)
+INCLUDE_DIRECTORIES (../)
 
-add_executable(
-        Lesson_3_1_Golomb
+ADD_EXECUTABLE(
+        EyerH264Decoder
 
-        RBSP.hpp
-        RBSP.cpp
+        Main.cpp
 
-        EBSP.hpp
-        EBSP.cpp
+        AnnexBReader.cpp
+        AnnexBReader.hpp
 
         Nalu.hpp
         Nalu.cpp
-
-        AnnexBReader.hpp
-        AnnexBReader.cpp
-
-        Main.cpp
 )
 
-file(COPY
+FILE(COPY
         ${CMAKE_CURRENT_SOURCE_DIR}/../demo_video_176x144_baseline.h264
         DESTINATION
         ${CMAKE_CURRENT_BINARY_DIR}/
         )
 
 INSTALL(
-        TARGETS Lesson_3_1_Golomb
+        TARGETS EyerH264Decoder
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

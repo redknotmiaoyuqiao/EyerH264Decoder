@@ -26,13 +26,3 @@ int Nalu::SetBuf(uint8_t * _buf, int _len)
 
     return 0;
 }
-
-int Nalu::GetEBSP(EBSP & ebsp)
-{
-    ebsp.len = len - startCodeLen;
-    ebsp.buf = (uint8_t *)malloc(ebsp.len);
-
-    memcpy(ebsp.buf, buf + startCodeLen, ebsp.len);
-
-    return 0;
-}

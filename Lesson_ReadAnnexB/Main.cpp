@@ -11,17 +11,15 @@ int main(int argc, char const *argv[])
     }
 
     while(1){
-        uint8_t buffer[1024 * 1024];
-        int bufferLen = 0;
-        int startcodeLen = 0;
-        ret = reader.ReadNalu(buffer, &bufferLen, &startcodeLen);
+        Nalu nalu;
+        ret = reader.ReadNalu(nalu);
         if(ret){
             break;
         }
         printf("=====================\n");
-        printf("Buffer Len: %d\n", bufferLen);
-        printf("Start Code Len: %d\n", startcodeLen);
-        printf("%d %d %d %d %d\n", buffer[0], buffer[1], buffer[2], buffer[3], buffer[4]);
+        printf("Buffer Len: %d\n", nalu.len);
+        printf("Start Code Len: %d\n", nalu.startCodeLen);
+        printf("%d %d %d %d %d\n", nalu.buf[0], nalu.buf[1], nalu.buf[2], nalu.buf[3], nalu.buf[4]);
     }
 
     reader.Close();

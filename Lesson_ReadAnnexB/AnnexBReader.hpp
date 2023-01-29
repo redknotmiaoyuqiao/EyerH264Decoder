@@ -9,7 +9,7 @@
 class AnnexBReader
 {
 public:
-    AnnexBReader(std::string & _filePath);
+    AnnexBReader(const std::string & _filePath);
     ~AnnexBReader();
 
     // 用来打开文件

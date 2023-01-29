@@ -1,6 +1,6 @@
 #include "AnnexBReader.hpp"
 
-AnnexBReader::AnnexBReader(std::string & _filePath)
+AnnexBReader::AnnexBReader(const std::string & _filePath)
 {
     filePath = _filePath;
 }

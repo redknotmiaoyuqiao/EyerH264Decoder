@@ -1,7 +1,7 @@
 include_directories (../)
 
 add_executable(
-        Lesson_3_3_BitStream
+        Lesson_BitStream
 
         RBSP.hpp
         RBSP.cpp
@@ -28,7 +28,7 @@ file(COPY
         )
 
 INSTALL(
-        TARGETS Lesson_3_3_BitStream
+        TARGETS Lesson_BitStream
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

@@ -1,7 +1,7 @@
 include_directories (../)
 
 add_executable(
-        Lesson_2_4_EBSP_RBSP
+        Lesson_NALU_Head
 
         RBSP.hpp
         RBSP.cpp
@@ -25,7 +25,7 @@ file(COPY
         )
 
 INSTALL(
-        TARGETS Lesson_2_3_ReadAnnexB
+        TARGETS Lesson_NALU_Head
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

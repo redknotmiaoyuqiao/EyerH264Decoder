@@ -4,10 +4,12 @@
 #include <stdint.h>
 #include <string>
 
+#include "Nalu.hpp"
+
 class AnnexBReader
 {
 public:
-    AnnexBReader(std::string & _filePath);
+    AnnexBReader(const std::string & _filePath);
     ~AnnexBReader();
 
     // 用来打开文件
@@ -16,8 +18,8 @@ public:
     // 用来关闭文件
     int Close();
 
-    // 用来读取一个 Nalu 文件
-    int ReadNalu(uint8_t * data, int * dataLen, int * startcodeLen);
+    // 用来读取一个 Nalu
+    int ReadNalu(Nalu & nalu);
 
 private:
     bool CheckStartCode(int & startCodeLen, uint8_t * bufPtr, int bufLen);

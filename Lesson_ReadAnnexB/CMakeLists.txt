@@ -1,9 +1,14 @@
 include_directories (../)
 
 add_executable(
-        Lesson_3_2_Golomb
+        Lesson_ReadAnnexB
+
+        Nalu.hpp
+        Nalu.cpp
+
         AnnexBReader.hpp
         AnnexBReader.cpp
+
         Main.cpp
 )
 
@@ -14,7 +19,7 @@ file(COPY
         )
 
 INSTALL(
-        TARGETS Lesson_2_3_ReadAnnexB
+        TARGETS Lesson_ReadAnnexB
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

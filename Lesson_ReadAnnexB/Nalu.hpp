@@ -6,16 +6,12 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "EBSP.hpp"
-
 class Nalu {
 public:
     Nalu();
     ~Nalu();
 
     int SetBuf(uint8_t * _buf, int _len);
-
-    int GetEBSP(EBSP & ebsp);
 
 public:
     uint8_t * buf = nullptr;
