@@ -10,6 +10,12 @@ ADD_EXECUTABLE(
 
         Nalu.hpp
         Nalu.cpp
+
+        EBSP.hpp
+        EBSP.cpp
+
+        RBSP.hpp
+        RBSP.cpp
 )
 
 FILE(COPY
