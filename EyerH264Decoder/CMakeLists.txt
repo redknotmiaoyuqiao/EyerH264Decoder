@@ -16,6 +16,9 @@ ADD_EXECUTABLE(
 
         RBSP.hpp
         RBSP.cpp
+
+        BitStream.hpp
+        BitStream.cpp
 )
 
 FILE(COPY

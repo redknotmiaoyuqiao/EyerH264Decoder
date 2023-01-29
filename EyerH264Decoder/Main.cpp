@@ -1,6 +1,7 @@
 #include "AnnexBReader.hpp"
 #include "EBSP.hpp"
 #include "RBSP.hpp"
+#include "BitStream.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -18,10 +19,6 @@ int main(int argc, char const *argv[])
         if(ret){
             break;
         }
-        printf("=====================\n");
-        printf("Buffer Len: %d\n", nalu.len);
-        printf("Start Code Len: %d\n", nalu.startCodeLen);
-        printf("%d %d %d %d %d\n", nalu.buf[0], nalu.buf[1], nalu.buf[2], nalu.buf[3], nalu.buf[4]);
 
         EBSP ebsp;
         ret = nalu.GetEBSP(ebsp);
@@ -35,7 +32,23 @@ int main(int argc, char const *argv[])
             break;
         }
 
+        uint8_t naluHead = rbsp.buf[0];
 
+        int forbidden_bit   = (naluHead >> 7) & 1;
+        int nal_ref_idc     = (naluHead >> 5) & 3;
+        int nal_unit_type   = (naluHead >> 0) & 0x1f;
+
+        printf("=================================\n");
+        printf("forbidden_bit: %d\n", forbidden_bit);
+        printf("nal_ref_idc: %d\n", nal_ref_idc);
+        printf("nal_unit_type: %d\n", nal_unit_type);
+
+        BitStream bitStream(rbsp.buf, rbsp.len);
+
+        for(int i=0;i<8;i++){
+            printf("%d", bitStream.ReadU1());
+        }
+        printf("\n");
     }
 
     reader.Close();
