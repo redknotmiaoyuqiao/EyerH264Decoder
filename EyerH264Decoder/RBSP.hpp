@@ -8,6 +8,9 @@ public:
     RBSP();
     ~RBSP();
 
+    RBSP(const RBSP & rbsp);
+    RBSP & operator = (const RBSP & rbsp);
+
 public:
     uint8_t * buf = nullptr;
     int len = 0;

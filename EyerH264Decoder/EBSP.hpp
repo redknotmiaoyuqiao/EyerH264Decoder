@@ -10,6 +10,9 @@ public:
     EBSP();
     ~EBSP();
 
+    EBSP(const EBSP & ebsp);
+    EBSP & operator = (const EBSP & ebsp);
+
     int GetRBSP(RBSP & rbsp);
 
 public:

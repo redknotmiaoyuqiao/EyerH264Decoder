@@ -19,6 +19,12 @@ ADD_EXECUTABLE(
 
         BitStream.hpp
         BitStream.cpp
+
+        NaluSPS.hpp
+        NaluSPS.cpp
+
+        NaluPPS.hpp
+        NaluPPS.cpp
 )
 
 FILE(COPY

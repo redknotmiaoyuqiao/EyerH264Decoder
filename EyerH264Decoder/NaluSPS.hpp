@@ -7,7 +7,6 @@ class NaluSPS : public Nalu
 {
 public:
     NaluSPS(const Nalu & nalu);
-
     virtual int Parse() override;
 };
 
