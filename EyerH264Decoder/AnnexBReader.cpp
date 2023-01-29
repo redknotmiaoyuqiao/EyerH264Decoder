@@ -113,10 +113,10 @@ int AnnexBReader::ReadFromFile()
 
     if(readedLen > 0){
         // 将新读取的 buf 添加到旧的 buffer 之后
-        uint8_t * _buffer = (uint8_t *) malloc (bufferLen + tempBufferLen);
+        uint8_t * _buffer = (uint8_t *) malloc (bufferLen + readedLen);
         memcpy(_buffer,                 buffer, bufferLen);
-        memcpy(_buffer + bufferLen,     buf,    tempBufferLen);
-        bufferLen = bufferLen + tempBufferLen;
+        memcpy(_buffer + bufferLen,     buf,    readedLen);
+        bufferLen = bufferLen + readedLen;
 
         if(buffer != nullptr){
             free(buffer);
